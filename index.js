@@ -24,7 +24,7 @@ bot.on('message', async (event) => {
     const data = await rp({ uri: 'https://prime.exchangerate-api.com/v5/76b653717686bfbfdd3fb10f/latest/TWD', json: true })
     if (msg.indexOf('usd') !== -1 || msg.indexOf('美金') !== -1 || msg.indexOf('美元') !== -1) {
       const answer = data.conversion_rates.USD
-      event.reply(answer)
+      event.reply('今日的美金匯率是:' + answer)
       console.log(answer)
     } else {
       event.reply('Oops!找不到您要的資料,請再輸入一次')
