@@ -23,7 +23,6 @@ bot.on('message', async (event) => {
   try {
     const data = await rp({ uri: 'http://data.fixer.io/api/latest?access_key=a447ac8212793bd067a2a72d052c44ba&format=1', json: true })
     msg = data.rates.USD
-    console.log(msg)
   } catch (error) {
     console.log(error.message)
     msg = '發生錯誤'
