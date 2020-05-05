@@ -23,7 +23,7 @@ bot.on('message', async (event) => {
  try {
     const data = await rp({ uri: 'https://prime.exchangerate-api.com/v5/76b653717686bfbfdd3fb10f/latest/TWD', json: true })
     if (msg.indexOf('usd') !== -1 || msg.indexOf('美金') !== -1 || msg.indexOf('美元') !== -1) {
-      const answer = data.conrates.USD
+      const answer = data.conversion_rates.USD
       event.reply(answer)
       console.log(answer)
     } else {
