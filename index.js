@@ -21,9 +21,11 @@ bot.on('message', async (event) => {
   // }
   let msg = ''
   try {
-    const data = await rp({ uri: 'https://kktix.com/events.json', json: true })
-    msg = data.entry[0].title
+    const data = await rp({ uri: 'http://data.fixer.io/api/latest?access_key=a447ac8212793bd067a2a72d052c44ba&format=1', json: true })
+    msg = data.rates.USD
+    console.log(msg)
   } catch (error) {
+    console.log(error.message)
     msg = '發生錯誤'
   }
   event.reply(msg)
@@ -31,5 +33,5 @@ bot.on('message', async (event) => {
 
 // 在port啟動
 bot.listen('/', process.env.PORT, () => {
-  console.log('機器人已啟動')
+  console.log('line bot ready')
 })
