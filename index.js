@@ -20,14 +20,20 @@ bot.on('message', async (event) => {
   //   event.reply(event.message.text)
   // }
   let msg = ''
-  try {
-    const data = await rp({ uri: 'http://data.fixer.io/api/latest?access_key=a447ac8212793bd067a2a72d052c44ba&format=1', json: true })
-    msg = data.rates.USD
+ try {
+    const data = await rp({ uri: 'https://prime.exchangerate-api.com/v5/76b653717686bfbfdd3fb10f/latest/TWD', json: true })
+    if (msg.indexOf('usd') !== -1 || msg.indexOf('美金') !== -1 || msg.indexOf('美元') !== -1) {
+      const answer = data.conrates.USD
+      event.reply(answer)
+      console.log(answer)
+    } else {
+      event.reply('Oops!找不到您要的資料,請再輸入一次')
+    }
   } catch (error) {
     console.log(error.message)
     msg = '發生錯誤'
   }
-  event.reply(msg)
+  event.reply(answer)
 })
 
 // 在port啟動
